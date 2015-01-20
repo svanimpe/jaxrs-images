@@ -9,6 +9,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
@@ -41,7 +44,7 @@ public class ImageService {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<String> getFileNames() throws IOException {
+    public JsonArray getFileNames() throws IOException {
         
         // Filters out all non JPEG or PNG files, as well as files larger than the maximum allowed size.
         DirectoryStream.Filter<java.nio.file.Path> filter = entry -> {
@@ -51,11 +54,11 @@ public class ImageService {
         };
         
         // Browse the filtered directory and list all the files.
-        List<String> results = new ArrayList<>();
+        JsonArrayBuilder results = Json.createArrayBuilder();
         for (java.nio.file.Path entry : Files.newDirectoryStream(BASE_DIR, filter)) {
             results.add(entry.getFileName().toString());
         }
-        return results;
+        return results.build();
     }
     
     /*

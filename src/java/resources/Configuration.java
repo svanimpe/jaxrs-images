@@ -1,6 +1,7 @@
 package resources;
 
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@javax.ws.rs.ApplicationPath("api")
+@ApplicationPath("api")
 public class Configuration extends Application { }
