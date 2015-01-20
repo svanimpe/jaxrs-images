@@ -1,4 +1,4 @@
-# JAX-RS Images
+# Images in JAX-RS
 
 See [http://svanimpe.be/blog/jaxrs-images.html](http://svanimpe.be/blog/jaxrs-images.html) for information.
 
